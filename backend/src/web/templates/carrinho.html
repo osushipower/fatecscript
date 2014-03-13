@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/static/img/favicon.ico"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script type="application/javascript">
+        var app = angular.module('myapp', [])
+
+        app.config(
+                function ($interpolateProvider) {
+                    $interpolateProvider.startSymbol('{_').endSymbol('_}');
+                }
+        )
+
+        function ListController($scope, $http) {
+            $scope.produtos = [];
+            $scope.novoProduto = {'nome': '', 'preco': ''};
+            $scope.buscarProdutos = function () {
+                $http.get('/carrinho/listar_produtos').success(function (produtos) {
+                    $scope.produtos = produtos;
+                });
+            }
+
+            $scope.adicionarProduto = function () {
+                $http.post('/carrinho/adicionar_produto', $scope.novoProduto).success(function (produtoSalvo) {
+                    $scope.produtos.push(produtoSalvo);
+                    $scope.novoProduto.nome = '';
+                    $scope.novoProduto.preco = '';
+                });
+            }
+
+            $scope.removerProduto = function (produto, indice) {
+                $http.post('/carrinho/apagar_produto', {'id': produto.id}).success(function () {
+                    $scope.produtos.splice(indice, 1);
+                });
+            }
+        }
+    </script>
+    <title></title>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="ListController">
+    <button ng-click="buscarProdutos()">Buscar Produtos</button>
+    <ul>
+        <li ng-repeat="p in produtos">{_ p.id _} - {_ p.nome _} - {_ p.preco _}
+            <button ng-click="removerProduto(p,$index)">Remover</button>
+        </li>
+    </ul>
+    <input ng-model="novoProduto.nome" placeholder="Nome do Produto"/>
+    <input ng-model="novoProduto.preco" placeholder="Preco do Produto"/>
+    <button ng-click="adicionarProduto()">Salvar</button>
+</div>
+
+</body>
+</html>
