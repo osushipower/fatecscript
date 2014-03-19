@@ -1,16 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <link rel="shortcut icon" href="/static/img/favicon.ico"/>
     <title>Zenwarch</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/apagar.css" />
+    <style>
+        p{
+            color: blue;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
 {% block body %}
-    <h1>Hello World</h1>
-    <form action="{{ form_url }}">
-        Type your name <input type="text" name="name"/>
-        <button type="submit">Send</button>
-    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Idade</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr>
+            <td>Liu</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>Alex Sandro</td>
+            <td>20</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="layout">
+        Layout
+    </div>
+    <div style="background-color: red;">
+        <form action="/home/params" method="post">
+            Nome: <input type="text" name="nome"/><br/>
+            Sexo:
+            <input type="radio" name="sexo" value="M" checked="checked">Masculino</input>
+            <input type="radio" name="sexo" value="F">Feminino</input><br/>
+            <input type="checkbox" name="ling" value="P" checked="checked">Python</input>
+            <input type="checkbox" name="ling" value="J">Java</input><br/>
+            <input type="submit" value="Salvar"/>
+        </form>
+        <a href="#conteudo">Conteudo XPTO</a>
+        <span></span>
+        <a href="/msg">mensagem</a>
+        <a href="http://google.com" target="_blank"><img
+                src="http://veja.abril.com.br/blog/radar-on-line/files/2014/01/google.jpg" /le></a>
+        <img src="/static/img/gato.jpg"/>
+
+        <p>Isso aqui é uma div com parágrafo</p>
+
+
+        <p>Isso aqui é uma div com outro parágrafo</p>
+    </div>
+    <div>
+        <span class="sublinhado" style="font-weight: normal">Primeiro span</span>
+        <span class="sublinhado" style="font-style: italic">Segundo span</span>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <span id="conteudo">conteudo pulando 5 linhas</span>
+    </div>
 {% endblock %}
 </body>
 </html>

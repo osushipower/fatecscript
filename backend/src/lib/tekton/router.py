@@ -122,7 +122,7 @@ def _build_params(*params):
     return ""
 
 
-def to_path(handler, *params, **query_params):
+def to_path(handler, *params):
     params = _build_params(*params)
 
     if inspect.ismodule(handler):
@@ -133,18 +133,14 @@ def to_path(handler, *params, **query_params):
     name = name.replace(package_base, "", 1)
 
     def remove_from_end(path, suffix):
-        return path[:-len(suffix) - 1] if path.endswith(suffix) else path
+        return path[:-len(suffix)-1] if path.endswith(suffix) else path
 
     home_index = '/'.join((home_base, index_base))
-    name = remove_from_end(name, home_index)
-    name = remove_from_end(name, index_base)
+    name=remove_from_end(name,home_index)
+    name=remove_from_end(name,index_base)
 
     if not name: return params or "/"
-    path = name.replace(".", "/") + params
-    if query_params:
-        query_string = urllib.urlencode(query_params)
-        path += '?' + query_string
-    return path
+    return name.replace(".", "/") + params
 
 
 def _extract_full_module(klass):

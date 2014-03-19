@@ -1,0 +1,41 @@
+{% extends 'templates/base.html' %}
+
+{% block main %}
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h1>Database Information</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        <th>Zip Code</th>
+                        <th>Phone</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for curso in lista_cursos %}
+                    <tr>
+                        <td>{{ curso.firstname }}</td>
+                        <td>{{ curso.lastname }}</td>
+                        <td>{{ curso.gender }}</td>
+                        <td>{{ curso.country }}</td>
+                        <td>{{ curso.state }}</td>
+                        <td>{{ curso.city }}</td>
+                        <td>{{ curso.address }}</td>
+                        <td>{{ curso.zipcode }}</td>
+                        <td>{{ curso.phone }}</td>
+                        <td>{{ curso.email }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
