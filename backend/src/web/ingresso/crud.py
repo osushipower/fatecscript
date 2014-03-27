@@ -10,10 +10,10 @@ def index(_write_tmpl):
     _write_tmpl('/templates/curso_listar.html', dct)
 
 
-def cadastrar(_write_tmpl, _req):
+def mostrar(_write_tmpl, _req):
     path = router.to_path(salvar)
     dct = {'salvar_curso': path, 'req': _req}
-    _write_tmpl('/templates/curso_form.html', dct)
+    _write_tmpl('/templates/ingressos.html', dct)
 
 
 

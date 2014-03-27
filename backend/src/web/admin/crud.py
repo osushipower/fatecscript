@@ -9,7 +9,7 @@ def index(_write_tmpl):
     dct = {'lista_cursos': query.fetch()}
     _write_tmpl('/templates/curso_listar.html', dct)
 
-
+'''
 def cadastrar(_write_tmpl, _req):
     path = router.to_path(salvar)
     dct = {'salvar_curso': path, 'req': _req}
@@ -17,9 +17,10 @@ def cadastrar(_write_tmpl, _req):
 
 
 
-def salvar(_handler, firstname, lastname, sex, country, state, city, address, zipcode, phone, email, password):
-    curso = Curso(firstname=firstname, lastname=lastname, sex=sex, country=country, state=state, city=city,
+def salvar(_handler, firstname, lastname, gender, country, state, city, address, zipcode, phone, email, password):
+    curso = Curso(firstname=firstname, lastname=lastname, gender=gender, country=country, state=state, city=city,
                   address=address, zipcode=zipcode, phone=phone, email=email, password=password)
     curso.put()
     path = router.to_path(index)
     _handler.redirect(path)
+'''

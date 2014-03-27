@@ -1,6 +1,22 @@
-.error{
+.error {
     background-color: #fee;
     border-style: solid;
     border-width: 1px;
     border-color: red;
+}
+
+.paragraph {
+    float: left !important;
+    margin-left: 170px;
+    margin-top: -130px !important;
+}
+
+.buttonpos {
+    float: right !important;
+    margin-left: 170px;
+    margin-top: 0px !important;
+}
+
+.badge-info {
+    background-color: #3a87ad;
 }

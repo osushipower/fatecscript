@@ -7,7 +7,7 @@ from google.appengine.ext import ndb
 class Curso(ndb.Model):
     firstname = ndb.StringProperty()
     lastname = ndb.StringProperty()
-    sex = ndb.StringProperty()
+    gender = ndb.StringProperty()
     country = ndb.StringProperty()
     state = ndb.StringProperty()
     city = ndb.StringProperty()
@@ -18,17 +18,15 @@ class Curso(ndb.Model):
     password = ndb.StringProperty()
 
 
-#
-#
-def salvar(firstname, lastname, sex, country, state, city, address, zipcode, phone, email, password):
-    curso = Curso(firstname=firstname, lastname=lastname, sex=sex, country=country, state=state, city=city,
+'''
+def salvar(firstname, lastname, gender, country, state, city, address, zipcode, phone, email, password):
+    curso = Curso(firstname=firstname, lastname=lastname, gender=gender, country=country, state=state, city=city,
                   address=address, zipcode=zipcode, phone=phone, email=email, password=password)
     curso.put()
+'''
 
-
-#
 def listar(_resp):
-    query = Curso.query().order(-Curso.firstname, -Curso.lastname, -Curso.sex, -Curso.country, -Curso.state,
+    query = Curso.query().order(-Curso.firstname, -Curso.lastname, -Curso.gender, -Curso.country, -Curso.state,
                                 -Curso.city, -Curso.address, -Curso.zipcode, -Curso.phone, -Curso.email,
                                 -Curso.password)
 
