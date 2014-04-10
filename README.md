@@ -1,4 +1,4 @@
-pypraticorest
+Ticketsy
 =============
 
-Projeto desenvolvido na primeira turma do PyPratico
+Projeto para a disciplina de 'Programação para Scripts'
