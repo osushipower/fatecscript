@@ -82,24 +82,22 @@
                         </div>
                         <button type="submit" class="btn btn-default">Procurar</button>
                     </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            {% if name %}
-                            <a data-toggle="modal" href>Hello {{name}}</a>
-                        </li>
-                        <li>
-                            <a data-toggle="modal" href="{{logout}}">(Log out)</a>
-                        </li>
-                            {% else %}
-                            <a data-toggle="modal" href="{{login}}">Log In</a>
-                            {% endif %}
-                        </li>
-                        <li>
+                    <div class="nav navbar-nav navbar-right" style="padding: 8px 8px 0 0">
+                        {% if _usuario_logado %}
+
+                            <a href="{{ _logout_url }}" class="btn btn-danger">Hello, {{ _usuario_logado.firstname }} (Logout)</a>
+
+                        {% else %}
+
+                            <a href="{{ _login_url }}" class="btn btn-success">Login Google</a>
+
+                        {% endif %}
+
                             <a href="#">Cart <span class="badge badge-info">0</span></a>
-                        </li>
-                        <li>
+
+
                             <a data-toggle="modal" href="#myModal">About</a>
-                        </li>
+
 
                         <!-- ABOUT -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -183,7 +181,7 @@
                                 </li>
                             </ul>
                         </li>-->
-                    </ul>
+                    </div>
                 </div>
 
             </nav>

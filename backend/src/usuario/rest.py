@@ -22,12 +22,15 @@ class Usuario(ndb.Model):
     def query_by_google(cls, google_id):
         return cls.query(cls.google_id==google_id)
 
-
+#
+#
 def salvar(firstname, lastname, sex, country, state, city, address, zipcode, phone, email, password):
     user = Usuario(firstname=firstname, lastname=lastname, sex=sex, country=country, state=state, city=city,
                   address=address, zipcode=zipcode, phone=phone, email=email, password=password)
     user.put()
 
+
+#
 def listar(_resp):
     query = Usuario.query().order(-Usuario.firstname, -Usuario.lastname, -Usuario.sex, -Usuario.country, -Usuario.state,
                                 -Usuario.city, -Usuario.address, -Usuario.zipcode, -Usuario.phone, -Usuario.email,
