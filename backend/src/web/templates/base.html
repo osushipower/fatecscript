@@ -60,9 +60,8 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li
-                        {% if request.path == '/' %} class="active"{% endif %}>
-                        <a href="/"><strong>Ticketsy</strong></a>
+                        <li {% if request.path == '/' %} class="active"{% endif %}>
+                            <a href="/"><strong>Ticketsy</strong></a>
                         </li>
                         {% set menu = [
                         ('Users', '/admin/crud'),
@@ -70,34 +69,36 @@
                         ('Tickets', '/ingresso/crud/mostrar')
                         ] %}
                         {% for name, href in menu %}
-                        <li
-                        {% if request.path.startswith(href) %} class="active"{% endif %}>
-                        <a href="{{ href }}">{{ name }}</a>
+                        <li {% if request.path.startswith(href) %} class="active"{% endif %}>
+                            <a href="{{ href }}">{{ name }}</a>
                         </li>
                         {% endfor %}
                     </ul>
+
+                    <!--
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-default">Procurar</button>
                     </form>
+                    -->
+
                     <div class="nav navbar-nav navbar-right" style="padding: 8px 8px 0 0">
+
+                        <a href="#" style="padding: 5px 5px 5px 5px">Cart <span class="badge badge-info">0</span></a>
+
                         {% if _usuario_logado %}
 
-                            <a href="{{ _logout_url }}" class="btn btn-danger">Hello, {{ _usuario_logado.firstname }} (Logout)</a>
+                            <a href="{{ _logout_url }}" class="btn btn-info" style="padding: 5px 5px 5px 5px">Hello, {{ _usuario_logado.firstname }} (Logout)</a>
 
                         {% else %}
 
-                            <a href="{{ _login_url }}" class="btn btn-success">Login Google</a>
+                            <a href="{{ _login_url }}" class="btn btn-success" style="padding: 5px 5px 5px 5px">Login Google</a>
 
                         {% endif %}
 
-                            <a href="#">Cart <span class="badge badge-info">0</span></a>
-
-
-                            <a data-toggle="modal" href="#myModal">About</a>
-
+                        <a data-toggle="modal" href="#myModal" style="padding: 5px 5px 5px 5px">About</a>
 
                         <!-- ABOUT -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
