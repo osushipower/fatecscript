@@ -40,69 +40,76 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="curso in lista_cursos | orderBy: curso.firstname">
+                            <tr ng-repeat="u in usuarios | orderBy: curso.firstname">
                                 <td>
-                                    <span ng-hide="curso.editando">{_ curso.firstname _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                    <span ng-hide="u.editando">{_ u.firstname _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.firstname">
+								                   ng-model="u.firstname">
                                     </div>
                                 </td>
                                 <td>
-                                    <span ng-hide="curso.editando">{_ curso.lastname _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                    <span ng-hide="u.editando">{_ u.lastname _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.lastname">
+								                   ng-model="u.lastname">
                                     </div>
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ curso.gender _}</span>
+                                <td><span ng-hide="u.editando">{_ u.gender _}</span>
                                     <div ng-show="curso.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
 								                   ng-model="curso.gender">
                                     </div>
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ curso.country _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                <td><span ng-hide="u.editando">{_ curso.country _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.country">
+								                   ng-model="u.country">
                                     </div>
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ curso.state _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                <td><span ng-hide="u.editando">{_ u.state _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.state">
+								                   ng-model="u.state">
                                     </div>
 
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ curso.city _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                <td><span ng-hide="u.editando">{_ u.city _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.city">
+								                   ng-model="u.city">
                                     </div>
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ curso.address _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                <td><span ng-hide="curso.editando">{_ u.address _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.address">
+								                   ng-model="u.address">
                                     </div>
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ curso.zipcode _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                <td><span ng-hide="u.editando">{_ u.zipcode _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.zipcode">
+								                   ng-model="u.zipcode">
                                     </div>
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ curso.phone _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                <td><span ng-hide="u.editando">{_ u.phone _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.phone">
+								                   ng-model="u.phone">
                                     </div>
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ curso.email _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                <td><span ng-hide="u.editando">{_ u.email _}</span>
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.email">
+								                   ng-model="u.email">
                                     </div>
+                                </td><span ng-hide="u.editando">{_ u.key _}</span>
+                                    <div ng-show="u.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="u.email">
+                                    </div>
+                                <td>
+
                                 </td>
                                 <td>
                                     <button class="btn btn-warning" title="Edit Register"

@@ -3,30 +3,11 @@ from __future__ import absolute_import, unicode_literals
 import json
 from google.appengine.ext import ndb
 
-
-class Curso(ndb.Model):
-    firstname = ndb.StringProperty()
-    lastname = ndb.StringProperty()
-    sex = ndb.StringProperty()
-    country = ndb.StringProperty()
-    state = ndb.StringProperty()
-    city = ndb.StringProperty()
-    address = ndb.StringProperty()
-    zipcode = ndb.StringProperty()
-    phone = ndb.StringProperty()
-    email = ndb.StringProperty()
-    password = ndb.StringProperty()
-
-
-#
-#
 def salvar(firstname, lastname, sex, country, state, city, address, zipcode, phone, email, password):
     curso = Curso(firstname=firstname, lastname=lastname, sex=sex, country=country, state=state, city=city,
                   address=address, zipcode=zipcode, phone=phone, email=email, password=password)
     curso.put()
 
-
-#
 def listar(_resp):
     query = Curso.query().order(-Curso.firstname, -Curso.lastname, -Curso.sex, -Curso.country, -Curso.state,
                                 -Curso.city, -Curso.address, -Curso.zipcode, -Curso.phone, -Curso.email,

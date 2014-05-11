@@ -2,8 +2,9 @@
 from __future__ import absolute_import, unicode_literals
 import json
 from google.appengine.ext import ndb
+from web.usuario.rest import Usuario
 
-
+'''
 class Curso(ndb.Model):
 	firstname = ndb.StringProperty()
 	lastname = ndb.StringProperty()
@@ -16,36 +17,36 @@ class Curso(ndb.Model):
 	phone = ndb.StringProperty()
 	email = ndb.StringProperty()
 	password = ndb.StringProperty()
+'''
 
 
 def listar(_resp):
-	query = Curso.query().order(-Curso.firstname, -Curso.lastname, -Curso.gender, -Curso.country, -Curso.state,
-								-Curso.city, -Curso.address, -Curso.zipcode, -Curso.phone, -Curso.email,
-								-Curso.password)
+    query = Usuario.query().order(-Usuario.firstname, -Usuario.lastname, -Usuario.sex, -Usuario.country, -Usuario.state,
+                                  -Usuario.city, -Usuario.address, -Usuario.zipcode, -Usuario.phone, -Usuario.email,
+                                  -Usuario.password, -Usuario.key)
 
-	def to_dict(c):
-		dct = c.to_dict()
-		dct['id'] = str(c.key.id())
-		return dct
+    def to_dict(c):
+        dct = c.to_dict()
+        dct['id'] = str(c.key.id())
+        return dct
 
-	lista_de_cursos = [to_dict(c) for c in query.fetch()]
-	lista_de_cursos = json.dumps(lista_de_cursos)
-	_resp.write(lista_de_cursos)
+    lista_de_cursos = [to_dict(c) for c in query.fetch()]
+    lista_de_cursos = json.dumps(lista_de_cursos)
+    _resp.write(lista_de_cursos)
 
-def salvar(_resp, firstname, lastname, gender, country, state, city, address, zipcode, phone, email):
+def salvar(_resp, firstname, lastname, sex, country, state, city, address, zipcode, phone, email):
+    user = Usuario(firstname=firstname, lastname=lastname, sex=sex, country=country,
+                   state=state, city=city, address=address, zipcode=zipcode, phone=phone, email=email)
+    key = user.put()
+    json_str = json.dumps({'id': key.id()})
+    _resp.write(json_str)
 
-	user = Usuario(firstname=firstname, lastname=lastname, gender=gender, country=country,
-				  state=state, city=city, address=address, zipcode=zipcode, phone=phone, email=email)
-	key = user.put()
-	json_str = json.dumps({'id':key.id()})
-	_resp.write(json_str)
 
-def editar(_resp, idUsuario, firstname, lastname, gender, country, state, city, address, zipcode, phone, email):
-
+def editar(_resp, idUsuario, firstname, lastname, sex, country, state, city, address, zipcode, phone, email):
     user = Usuario.get_by_id(int(idUsuario))
     user.firstname = firstname
     user.lastname = lastname
-    user.gender = gender
+    user.sex = sex
     user.country = country
     user.state = state
     user.city = city
@@ -57,6 +58,5 @@ def editar(_resp, idUsuario, firstname, lastname, gender, country, state, city, 
     user.put()
 
 def remover(_resp, idUsuario):
-
     user = Usuario.get_by_id(int(idUsuario))
-    usuario.key.delete()
+    user.key.delete()

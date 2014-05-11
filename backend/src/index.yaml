@@ -59,3 +59,30 @@ indexes:
     direction: desc
   - name: password
     direction: desc
+
+- kind: Usuario
+  properties:
+  - name: firstname
+    direction: desc
+  - name: lastname
+    direction: desc
+  - name: sex
+    direction: desc
+  - name: country
+    direction: desc
+  - name: state
+    direction: desc
+  - name: city
+    direction: desc
+  - name: address
+    direction: desc
+  - name: zipcode
+    direction: desc
+  - name: phone
+    direction: desc
+  - name: email
+    direction: desc
+  - name: password
+    direction: desc
+  - name: __key__
+    direction: desc
