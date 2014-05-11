@@ -22,7 +22,7 @@ class Usuario(ndb.Model):
     def query_by_google(cls, google_id):
         return cls.query(cls.google_id==google_id)
 
-
+'''
 def salvar(firstname, lastname, sex, country, state, city, address, zipcode, phone, email, password):
     user = Usuario(firstname=firstname, lastname=lastname, sex=sex, country=country, state=state, city=city,
                   address=address, zipcode=zipcode, phone=phone, email=email, password=password)
@@ -41,3 +41,4 @@ def listar(_resp):
     lista_de_usuarios = [to_dict(c) for c in query.fetch()]
     lista_de_usuarios = json.dumps(lista_de_usuarios)
     _resp.write(lista_de_usuarios)
+'''

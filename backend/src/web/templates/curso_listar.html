@@ -1,43 +1,126 @@
 {% extends 'templates/base.html' %}
 
+{% block head %}
+    {{ super() }}
+        <script type="text/javascript" src="/static/js/angular.min.js"></script>
+        <script type="text/javascript" src="/static/js/controller/tableController.js"></script>
+{% endblock %}
+
 {% block main %}
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <h1>Database Information</h1>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Gender</th>
-                            <th>Country</th>
-                            <th>State</th>
-                            <th>City</th>
-                            <th>Address</th>
-                            <th>Zip Code</th>
-                            <th>Phone</th>
-                            <th>E-Mail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for curso in lista_cursos %}
-                        <tr>
-                            <td>{{ curso.firstname }}</td>
-                            <td>{{ curso.lastname }}</td>
-                            <td>{{ curso.gender }}</td>
-                            <td>{{ curso.country }}</td>
-                            <td>{{ curso.state }}</td>
-                            <td>{{ curso.city }}</td>
-                            <td>{{ curso.address }}</td>
-                            <td>{{ curso.zipcode }}</td>
-                            <td>{{ curso.phone }}</td>
-                            <td>{{ curso.email }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+        <div ng-app="ticketsyApp" ng-controller="controller" class="row clearfix">
+            <div class="col-md-12 column">
+                <h1>Database Information</h1>
+
+                <!--<form action="{{ salvar_curso }}" method="post" role="form">
+
+                    <div class="form-group" ng-show="isEditEnabled">
+                        <label >First Name:</label>
+                        <input type="text" class="form-control" name="firstname" ng-show="isEditEnabled">
+
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lastname" ng-show="isEditEnabled">
+                    </div>
+
+                </form>-->
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Gender</th>
+                                <th>Country</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>Address</th>
+                                <th>Zip Code</th>
+                                <th>Phone</th>
+                                <th>E-Mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="curso in lista_cursos | orderBy: curso.firstname">
+                                <td>
+                                    <span ng-hide="curso.editando">{_ curso.firstname _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.firstname">
+                                    </div>
+                                </td>
+                                <td>
+                                    <span ng-hide="curso.editando">{_ curso.lastname _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.lastname">
+                                    </div>
+                                </td>
+                                <td><span ng-hide="curso.editando">{_ curso.gender _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.gender">
+                                    </div>
+                                </td>
+                                <td><span ng-hide="curso.editando">{_ curso.country _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.country">
+                                    </div>
+                                </td>
+                                <td><span ng-hide="curso.editando">{_ curso.state _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.state">
+                                    </div>
+
+                                </td>
+                                <td><span ng-hide="curso.editando">{_ curso.city _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.city">
+                                    </div>
+                                </td>
+                                <td><span ng-hide="curso.editando">{_ curso.address _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.address">
+                                    </div>
+                                </td>
+                                <td><span ng-hide="curso.editando">{_ curso.zipcode _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.zipcode">
+                                    </div>
+                                </td>
+                                <td><span ng-hide="curso.editando">{_ curso.phone _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.phone">
+                                    </div>
+                                </td>
+                                <td><span ng-hide="curso.editando">{_ curso.email _}</span>
+                                    <div ng-show="curso.editando" class="input-group">
+                                        <input type="text" class="form-control input-sm"
+								                   ng-model="curso.email">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-warning" title="Edit Register"
+                                            ng-click="editarUsuario(1)" ng-hide="curso.editando">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button class="btn btn-success" ng-click="confirmarEdicao(l)" ng-show="curso.editando">
+								        <i class="glyphicon glyphicon-floppy-disk"></i>
+							        </button>
+                                    <button class="btn btn-danger" title="Delete Register" ng-hide="curso.editando">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+
 {% endblock %}
