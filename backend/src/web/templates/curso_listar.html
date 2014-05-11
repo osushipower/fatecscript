@@ -37,6 +37,7 @@
                                 <th>Zip Code</th>
                                 <th>Phone</th>
                                 <th>E-Mail</th>
+                                <th>ID</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -103,7 +104,7 @@
                                         <input type="text" class="form-control input-sm"
 								                   ng-model="u.email">
                                     </div>
-                                </td><span ng-hide="u.editando">{_ u.key _}</span>
+                                </td><span ng-hide="u.editando">{_ u.id _}</span>
                                     <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
 								                   ng-model="u.email">
@@ -113,13 +114,15 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-warning" title="Edit Register"
-                                            ng-click="editarUsuario(1)" ng-hide="curso.editando">
+                                            ng-click="editarUsuario(1)" ng-hide="u.editando">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
-                                    <button class="btn btn-success" ng-click="confirmarEdicao(l)" ng-show="curso.editando">
+                                    <button class="btn btn-success" title="Save Changes"
+                                            ng-click="confirmarEdicao(l)" ng-show="u.editando">
 								        <i class="glyphicon glyphicon-floppy-disk"></i>
 							        </button>
-                                    <button class="btn btn-danger" title="Delete Register" ng-hide="curso.editando">
+                                    <button class="btn btn-danger" title="Delete Register"
+                                            ng-click="removerElemento(1)" ng-hide="u.editando">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </button>
                                 </td>

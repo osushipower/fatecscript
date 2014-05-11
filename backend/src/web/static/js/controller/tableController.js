@@ -75,7 +75,7 @@ function controller($scope, $http) {
         $scope.usuarios.splice(index, 1);
         usuario.editando = false;
 
-        $http.post('/admin/rest/remover', {"idUsuario": usuario.idUsuario});
+        $http.post('/admin/rest/remover', {"idUsuario": usuario.id});
     }
 
 }
