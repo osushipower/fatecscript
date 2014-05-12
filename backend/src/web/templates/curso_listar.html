@@ -41,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="u in usuarios | orderBy: curso.firstname">
+                            <tr ng-repeat="u in usuarios | orderBy: u.firstname">
                                 <td>
                                     <span ng-hide="u.editando">{_ u.firstname _}</span>
                                     <div ng-show="u.editando" class="input-group">
@@ -56,13 +56,13 @@
 								                   ng-model="u.lastname">
                                     </div>
                                 </td>
-                                <td><span ng-hide="u.editando">{_ u.gender _}</span>
+                                <td><span ng-hide="u.editando">{_ u.sex _}</span>
                                     <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
-								                   ng-model="curso.gender">
+								                   ng-model="u.sex">
                                     </div>
                                 </td>
-                                <td><span ng-hide="u.editando">{_ curso.country _}</span>
+                                <td><span ng-hide="u.editando">{_ u.country _}</span>
                                     <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
 								                   ng-model="u.country">

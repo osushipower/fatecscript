@@ -20,7 +20,7 @@ function controller($scope, $http) {
         var usuario = {
             "firstname": $scope.inputFirstName,
             "lastname": $scope.inputLastName,
-            "gender": $scope.inputGender,
+            "sex": $scope.inputGender,
             "country": $scope.inputCountry,
             "state": $scope.inputState,
             "city": $scope.inputCity,
@@ -57,7 +57,7 @@ function controller($scope, $http) {
         params = {"idUsuario": usuario.id,
                     "firstname": usuario.firstname,
                     "lastname": usuario.lastname,
-                    "gender": usuario.gender,
+                    "sex": usuario.sex,
                     "country": usuario.country,
                     "state": usuario.state,
                     "city": usuario.city,
