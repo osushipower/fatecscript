@@ -57,7 +57,7 @@
                                     </div>
                                 </td>
                                 <td><span ng-hide="u.editando">{_ u.gender _}</span>
-                                    <div ng-show="curso.editando" class="input-group">
+                                    <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
 								                   ng-model="curso.gender">
                                     </div>
@@ -81,7 +81,7 @@
 								                   ng-model="u.city">
                                     </div>
                                 </td>
-                                <td><span ng-hide="curso.editando">{_ u.address _}</span>
+                                <td><span ng-hide="u.editando">{_ u.address _}</span>
                                     <div ng-show="u.editando" class="input-group">
                                         <input type="text" class="form-control input-sm"
 								                   ng-model="u.address">
@@ -104,13 +104,6 @@
                                         <input type="text" class="form-control input-sm"
 								                   ng-model="u.email">
                                     </div>
-                                </td><span ng-hide="u.editando">{_ u.id _}</span>
-                                    <div ng-show="u.editando" class="input-group">
-                                        <input type="text" class="form-control input-sm"
-								                   ng-model="u.email">
-                                    </div>
-                                <td>
-
                                 </td>
                                 <td>
                                     <button class="btn btn-warning" title="Edit Register"
