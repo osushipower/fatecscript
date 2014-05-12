@@ -114,15 +114,15 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-warning" title="Edit Register"
-                                            ng-click="editarUsuario(1)" ng-hide="u.editando">
+                                            ng-click="editarUsuario(u)" ng-hide="u.editando">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                     <button class="btn btn-success" title="Save Changes"
-                                            ng-click="confirmarEdicao(l)" ng-show="u.editando">
+                                            ng-click="confirmarEdicao(u)" ng-show="u.editando">
 								        <i class="glyphicon glyphicon-floppy-disk"></i>
 							        </button>
                                     <button class="btn btn-danger" title="Delete Register"
-                                            ng-click="removerElemento(1)" ng-hide="u.editando">
+                                            ng-click="removerElemento(u, $index)" ng-hide="u.editando">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </button>
                                 </td>

@@ -32,7 +32,7 @@ function controller($scope, $http) {
 
         $http.post('/admin/rest/salvar', usuario).success(function(json){
 
-            usuario.idUsuario = json.idUsuario;
+            usuario.id = json.idUsuario;
             usuario.editando = false;
             $scope.usuarios.push(usuario)
 
@@ -54,7 +54,7 @@ function controller($scope, $http) {
     $scope.confirmarEdicao = function(usuario){
         usuario.editando = false;
 
-        params = {"idUsuario": usuario.idUsuario,
+        params = {"idUsuario": usuario.id,
                     "firstname": usuario.firstname,
                     "lastname": usuario.lastname,
                     "gender": usuario.gender,
