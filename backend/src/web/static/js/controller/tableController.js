@@ -28,8 +28,8 @@ function controller($scope, $http) {
             "zipcode": $scope.inputZipCode,
             "phone": $scope.inputPhone,
             "email": $scope.inputEmail
-        }
-
+        };
+        console.log(usuario)
         $http.post('/admin/rest/salvar', usuario).success(function(json){
 
             usuario.id = json.idUsuario;
@@ -76,6 +76,15 @@ function controller($scope, $http) {
         usuario.editando = false;
 
         $http.post('/admin/rest/remover', {"idUsuario": usuario.id});
+    }
+
+    $scope.isActive = function (viewLocation) {
+        return viewLocation === $location.path();
+    };
+
+    $scope.addUser = function(){
+        $scope.usuarios.push({'firstname': $scope.inputFirstName, 'lastname': $scope.inputLastName,'email': $scope.inputEmail})
+        users_service.addUser($scope.inputFirstName, $scope.inputLastName, $scope.inputEmail)
     }
 
 }

@@ -9,10 +9,7 @@
 {% block main %}
         <div ng-app="ticketsyApp" ng-controller="controller" class="row clearfix">
             <div class="col-md-12 column">
-                <h1>Database Information</h1>
-
                 <!--<form action="{{ salvar_curso }}" method="post" role="form">
-
                     <div class="form-group" ng-show="isEditEnabled">
                         <label >First Name:</label>
                         <input type="text" class="form-control" name="firstname" ng-show="isEditEnabled">
@@ -20,9 +17,62 @@
                         <label>Last Name</label>
                         <input type="text" class="form-control" name="lastname" ng-show="isEditEnabled">
                     </div>
-
                 </form>-->
+                <br />
+                <h1>Create New User</h1>
+                <div class="table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>E-Mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputFirstname">
+                                    </td>
+                                </div>
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputLastname"></td>
+                                </div>
+                                <!--
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputGender"></td>
+                                </div>
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputCountry"></td>
+                                </div>
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputState"></td>
+                                </div>
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputCity"></td>
+                                </div>
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputAddress"></td>
+                                </div>
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputZipcode"></td>
+                                </div>
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputPhone"></td>
+                                </div>
+                                -->
+                                <div class="input-group">
+                                    <td><input type="text" class="form-control input-sm" ng-model="inputEmail"></td>
+                                </div>
+                                <td><button class="btn btn-success" title="Create New User" type="submit" ng-click="salvarUsuario()">
+                                        <i class="glyphicon glyphicon-floppy-disk"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
+                <br />
+                <h1>Database Information</h1>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -37,7 +87,6 @@
                                 <th>Zip Code</th>
                                 <th>Phone</th>
                                 <th>E-Mail</th>
-                                <th>ID</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -95,13 +144,13 @@
                                 </td>
                                 <td><span ng-hide="u.editando">{_ u.phone _}</span>
                                     <div ng-show="u.editando" class="input-group">
-                                        <input type="text" class="form-control input-sm"
+                                        <input type="tel" class="form-control input-sm"
 								                   ng-model="u.phone">
                                     </div>
                                 </td>
                                 <td><span ng-hide="u.editando">{_ u.email _}</span>
                                     <div ng-show="u.editando" class="input-group">
-                                        <input type="text" class="form-control input-sm"
+                                        <input type="email" class="form-control input-sm"
 								                   ng-model="u.email">
                                     </div>
                                 </td>
