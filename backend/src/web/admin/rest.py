@@ -33,7 +33,7 @@ def listar(_resp):
     lista_de_cursos = json.dumps(lista_de_cursos)
     _resp.write(lista_de_cursos)
 
-def salvar(_resp, usuario):
+def salvar(_resp, firstname, lastname, sex, country, state, city, address, zipcode, phone, email):
     user = Usuario(firstname=firstname, lastname=lastname, sex=sex, country=country,
                    state=state, city=city, address=address, zipcode=zipcode, phone=phone, email=email)
     key = user.put()
