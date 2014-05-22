@@ -32,7 +32,7 @@ function controller($scope, $http) {
         console.log(usuario)
         $http.post('/admin/rest/salvar', usuario).success(function(json){
 
-            usuario.id = json.idUsuario;
+            usuario.id = json.id;
             usuario.editando = false;
             $scope.usuarios.push(usuario)
 
