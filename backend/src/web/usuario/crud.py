@@ -15,8 +15,6 @@ def cadastrar(_write_tmpl, _req):
     dct = {'salvar_curso': path, 'req': _req}
     _write_tmpl('/templates/curso_form.html', dct)
 
-
-
 def salvar(_handler, firstname, lastname, sex, country, state, city, address, zipcode, phone, email, password):
     user = Usuario(firstname=firstname, lastname=lastname, sex=sex, country=country, state=state, city=city,
                   address=address, zipcode=zipcode, phone=phone, email=email, password=password)
